@@ -1,0 +1,187 @@
+public class LemonadeStand {
+    private int lemons;
+    private int gallonsOfWater;
+    private int cupsOfSugar;
+    private int emptyGlasses;
+    private int glassesOfLemonade;
+    private double price;
+    private double income;
+
+    public LemonadeStand() {
+        lemons = 0;
+        gallonsOfWater = 0;
+        cupsOfSugar = 0;
+        emptyGlasses = 0;
+
+        glassesOfLemonade = 0;
+        price = 0.0;
+        income = 0;
+    }
+
+    /**
+     * @param lemons
+     * @param gallonsOfWater
+     * @param cupsOfSugar
+     * @param emptyGlasses
+     * @param price
+     */
+    public LemonadeStand(int lemons, int gallonsOfWater, int cupsOfSugar, int emptyGlasses, double price) {
+        setLemons(lemons);
+        setGallonsOfWater(gallonsOfWater);
+        setCupsOfSugar(cupsOfSugar);
+        setEmptyGlasses(emptyGlasses);
+        setPrice(price);
+        setGlassesOfLemonade(0);
+        setIncome(0.0);
+    }
+
+    public void setLemons(int lemons) {
+        if (lemons < 0) {
+            this.lemons = 0;
+        } else {
+            this.lemons = lemons;
+        }
+    }
+
+    public void setGallonsOfWater(int gallonsOfWater) {
+        if (gallonsOfWater < 0) {
+            this.gallonsOfWater = 0;
+        } else {
+            this.gallonsOfWater = gallonsOfWater;
+        }
+    }
+
+    public void setCupsOfSugar(int cupsOfSugar) {
+        if (cupsOfSugar < 0) {
+            this.cupsOfSugar = 0;
+        } else {
+            this.cupsOfSugar = cupsOfSugar;
+        }
+    }
+
+    public void setEmptyGlasses(int emptyGlasses) {
+        if (emptyGlasses < 0) {
+            this.emptyGlasses = 0;
+        } else {
+            this.emptyGlasses = emptyGlasses;
+        }
+    }
+
+    public void setGlassesOfLemonade(int glassesOfLemonade) {
+        if (glassesOfLemonade < 0) {
+            this.glassesOfLemonade = 0;
+        } else {
+            this.glassesOfLemonade = glassesOfLemonade;
+        }
+    }
+
+    public void setPrice(double price) {
+        if (price < 0) {
+            this.price = 0;
+        } else {
+            this.price = price;
+        }
+    }
+
+    public void setIncome(double income) {
+        if (income < 0) {
+            this.income = 0;
+        } else {
+            this.income = income;
+        }
+    }
+
+    public int getLemons() {
+        return lemons;
+    }
+
+    public int getGallonsOfWater() {
+        return gallonsOfWater;
+    }
+
+    public int getCupsOfSugar() {
+        return cupsOfSugar;
+    }
+
+    public int getEmptyGlasses() {
+        return emptyGlasses;
+    }
+
+    public int getGlassesOfLemonade() {
+        return glassesOfLemonade;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getIncome() {
+        return income;
+    }
+
+    public int sellMoreLemonade(int requestedGlasses) 
+    {
+        
+    }
+    public int makeLemonade() {
+        if (lemons >= 6 && gallonsOfWater >= 1 && cupsOfSugar >= 1 && emptyGlasses >= 8) {
+            lemons -= 6;
+            gallonsOfWater -= 1;
+            cupsOfSugar -= 1;
+            emptyGlasses -= 8;
+            glassesOfLemonade += 8;
+            return 8;
+        }
+        return 0;
+    }
+
+    public int sellLemonade() {
+        if (glassesOfLemonade == 0) {
+            makeLemonade();
+            if (glassesOfLemonade == 0)
+                return 0;
+            else {
+                glassesOfLemonade = glassesOfLemonade - 1;
+                income = income + price;
+                return 1;
+            }
+        } else {
+            glassesOfLemonade = glassesOfLemonade - 1;
+            if (glassesOfLemonade < 0) {
+                glassesOfLemonade = 0;
+            }
+            income = income + price;
+            return 1;
+        }
+    }
+
+    /* Main method */
+    public static void main(String[] args) {
+        LemonadeStand lemonadeStand = new LemonadeStand(15, 3, 4, 20, 1.5);
+        lemonadeStand.makeLemonade();
+        System.out.println(lemonadeStand.getLemons());
+        System.out.println(lemonadeStand.getGallonsOfWater());
+        System.out.println(lemonadeStand.getCupsOfSugar());
+        System.out.println(lemonadeStand.getGlassesOfLemonade());
+
+        /*Calling sellLemonade method 3 times
+         * selling 3 glassesOflemonades
+         * before selling 8 glassesofLemonades
+         * after selling 5 should be left
+         * */
+        lemonadeStand.sellLemonade();
+        lemonadeStand.sellLemonade();
+        lemonadeStand.sellLemonade();
+        /* Test method 
+         * Modify code according to your needs */
+        System.out.println("After selling lemonades 3 times");
+
+        System.out.println(lemonadeStand.getLemons());
+        System.out.println(lemonadeStand.getGallonsOfWater());
+        System.out.println(lemonadeStand.getCupsOfSugar());
+        System.out.println(lemonadeStand.getGlassesOfLemonade());
+
+    }
+
+}
+
