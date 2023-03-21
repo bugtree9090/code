@@ -1,0 +1,39 @@
+emonade = glassesOfLemonade - 1;
+            if (glassesOfLemonade < 0) {
+                glassesOfLemonade = 0;
+            }
+            income = income + price;
+            return 1;
+        }
+    }
+
+    /* Main method */
+    public static void main(String[] args) {
+        LemonadeStand lemonadeStand = new LemonadeStand(15, 3, 4, 20, 1.5);
+        lemonadeStand.makeLemonade();
+        System.out.println(lemonadeStand.getLemons());
+        System.out.println(lemonadeStand.getGallonsOfWater());
+        System.out.println(lemonadeStand.getCupsOfSugar());
+        System.out.println(lemonadeStand.getGlassesOfLemonade());
+
+        /*Calling sellLemonade method 3 times
+         * selling 3 glassesOflemonades
+         * before selling 8 glassesofLemonades
+         * after selling 5 should be left
+         * */
+        lemonadeStand.sellLemonade();
+        lemonadeStand.sellLemonade();
+        lemonadeStand.sellLemonade();
+        /* Test method 
+         * Modify code according to your needs */
+        System.out.println("After selling lemonades 3 times");
+
+        System.out.println(lemonadeStand.getLemons());
+        System.out.println(lemonadeStand.getGallonsOfWater());
+        System.out.println(lemonadeStand.getCupsOfSugar());
+        System.out.println(lemonadeStand.getGlassesOfLemonade());
+
+    }
+
+}
+
